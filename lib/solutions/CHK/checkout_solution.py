@@ -32,11 +32,9 @@ def checkout(items):
     if any([sku not in prices.keys() for sku in item_counts.keys()]):
         return -1
 
-    item_counts = Counter(items)
-    total_price = 0
-
     for item, count in item_counts.items():
-        if item in special_offers:
+      # apply special offers
+      if item in special_offers:
             offer = special_offers[item]
             quantity = offer['quantity']
             if count >= quantity:
@@ -52,10 +50,18 @@ def checkout(items):
             elif item == 'A' and count >= special_offers['A_5']['quantity']:
                 total_price += (count // special_offers['A_5']['quantity']) * special_offers['A_5']['price']
                 count %= special_offers['A_5']['quantity']
+            
+            if item == 'B' and count >= quantity:
+                total_price += (count // quantity) * offer['price']
+                count %= quantity
+            
+            if item == 'E' and count >= quantity:
+
 
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
 
