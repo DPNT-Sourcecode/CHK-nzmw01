@@ -61,7 +61,3 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
-
-
-
-
