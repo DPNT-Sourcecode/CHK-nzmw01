@@ -37,7 +37,7 @@ def checkout(items):
             offer = special_offers[item]
             quantity = offer['quantity']
             if count >= quantity:
-                if item == 'A' and count >= quantity:
+                if item == 'A':
                     if count >= offer['quantity']:
                         total_price += (count // quantity) * offer['price']
                         count %= quantity
@@ -61,6 +61,7 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
 
