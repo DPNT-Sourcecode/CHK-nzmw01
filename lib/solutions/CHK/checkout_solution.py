@@ -3,6 +3,7 @@ from collections import Counter
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+    defined_skus = 'ABCD'
     # if not skus:
     #     return 0
     if not isinstance(skus, str):
@@ -13,7 +14,7 @@ def checkout(skus):
     # count frequency of each sku
     sku_count = Counter(skus)
     # check if any sku is invalid
-    if any([sku not in 'ABCD' for sku in sku_count.keys()]):
+    if any([sku not in defined_skus for sku in sku_count.keys()]):
         return -1
     # check the count of each sku
     if any([sku_count[sku] < 0 for sku in sku_count.keys()]):
@@ -33,6 +34,7 @@ def checkout(skus):
 
     
     
+
 
 
 
