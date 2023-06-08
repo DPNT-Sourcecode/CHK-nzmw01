@@ -16,6 +16,22 @@ def checkout(items):
         'E': {'quantity': 2, 'free': 'B'}
     }
 
+    # check if skus is empty
+    if not items:
+        return 0
+    
+    # check if skus is a string
+    if not isinstance(items, str):
+        return -1
+    
+    # count the frequency of each sku
+    item_counts = Counter(items)
+    total_price = 0
+
+    # check if skus contains only valid skus
+    if any([sku not in prices.keys() for sku in item_counts.keys()]):
+        return -1
+
     item_counts = Counter(items)
     total_price = 0
 
@@ -37,4 +53,5 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
