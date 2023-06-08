@@ -34,6 +34,7 @@ def checkout(items):
     # select E items first if available
     if 'E' in item_counts.keys() and 'B' in item_counts.keys():
         count = item_counts['E']
+        offer = special_offers['E']
         total_free = count // 2
         if total_free >= 1:
             item_counts[offer['free']] -= total_free
@@ -62,9 +63,4 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
-
-
-
-
-
 
