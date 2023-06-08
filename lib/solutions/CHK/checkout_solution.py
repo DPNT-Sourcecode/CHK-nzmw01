@@ -20,9 +20,22 @@ def checkout(skus):
         return -1
     
     # count the frequency of each sku
-    
+    sku_count = Counter(skus)
+    total_price = 0
 
     # check if skus contains only valid skus
+    if any([sku not in prices.keys() for sku in sku_count.keys()]):
+        return -1
+    
+    for item, count in sku_count.items():
+        if item in special_offers:
+            offer = special_offers[item]
+            quantity = offer['quantity']
+            if count >= quantity:
+                if 'free' in offer:
+                    free_item = offer['free']
+                    free_item_count = count // quantity
+                    sku_count[free_item] -= free_item_count
 
 
 
@@ -90,6 +103,7 @@ def checkout(skus):
 
     
     
+
 
 
 
