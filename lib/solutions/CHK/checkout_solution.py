@@ -61,13 +61,10 @@ def checkout(items):
 
             if item == 'F' and count >= 3:
                 free_f_count = count // 3
-                count = count - free_f_count + (count % 3)
+                count = count - (free_f_count + 1) + (count % 3)
              
         # add the price of the remaining items
         total_price += count * prices.get(item, 0)
 
     return total_price
-
-
-
 
