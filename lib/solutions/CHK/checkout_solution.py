@@ -41,7 +41,10 @@ def checkout(items):
                 if 'free' in offer:
                     free_item = offer['free']
                     free_count = count // quantity
-                    item_counts[free_item] += free_count
+                    if item_counts[free_item] >= free_count:
+                        item_counts[free_item] -= free_count
+                    else:
+                        item_counts[free_item] = 0
 
             if item == 'A' and count >= quantity:
                 if count >= offer['quantity']:
@@ -61,6 +64,7 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
 
