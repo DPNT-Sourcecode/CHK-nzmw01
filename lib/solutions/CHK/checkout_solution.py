@@ -88,15 +88,22 @@ def checkout(items):
 
     for item, count in item_counts.items():
         # apply special offers
-        if item in special_offers:
-            offer = special_offers[item]
-            if item == 'A':
-                if count >= 5:
-                    total_price += (count // 5) * 200
-                    count %= 5
-                if count >= 3:
-                    total_price += (count // 3) * 130
-                    count %= 3
+        if item in special_double_offers.keys():
+            offer = special_double_offers[item]
+            for o in offer:
+                if count >= o['quantity']:
+                    total_price += (count // o['quantity']) * o['price']
+                    count %= o['quantity']
+
+            # if item == 'A':
+            #     if count >= 5:
+            #         total_price += (count // 5) * 200
+            #         count %= 5
+            #     if count >= 3:
+            #         total_price += (count // 3) * 130
+            #         count %= 3
+        
+        if 
             
             if item == 'B' and count >= 2:
                 total_price += (count // 2) * 45
@@ -115,5 +122,6 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
