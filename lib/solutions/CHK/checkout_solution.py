@@ -3,7 +3,7 @@ from collections import Counter
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    defined_skus = 'ABCD'
+    defined_skus = 'ABCDE'
     # if not skus:
     #     return 0
     if not isinstance(skus, str):
@@ -30,10 +30,22 @@ def checkout(skus):
             total_price += sku_count[sku] * 20
         elif sku == 'D':
             total_price += sku_count[sku] * 15
+        elif sku == 'E':
+            total_price += sku_count[sku] * 40
+            # check if there are 2E's
+            if sku_count[sku] >= 2:
+                # check if there are 1B's
+                if 'B' in sku_count.keys():
+                    # check if there are more than 1B's
+                    if sku_count['B'] > 1:
+                        # check if there are more than 2E's
+                        if sku_count[sku] > 2:
+                            
     return total_price
 
     
     
+
 
 
 
