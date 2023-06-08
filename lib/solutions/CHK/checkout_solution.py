@@ -31,13 +31,18 @@ def checkout(items):
     if any([sku not in prices.keys() for sku in item_counts.keys()]):
         return -1
 
-    # select E items
+    # select E items first if available
+    if 'E' in item_counts.keys() and 'B' in item_counts.keys():
+        offer = special_offers['E']
+        count = item_counts['E']
+
     if item == 'E' and offer['free'] in item_counts:
-                total_free = count // 2
-                if total_free >= 1:
-                     item_counts[offer['free']] -= total_free
-                     if item_counts[offer['free']] < 0:
-                            item_counts[offer['free']] = 0
+        total_free = count // 2
+        if total_free >= 1:
+                item_counts[offer['free']] -= total_free
+                if item_counts[offer['free']] < 0:
+                    item_counts[offer['free']] = 0
+
     for item, count in item_counts.items():
         # apply special offers
         if item in special_offers:
@@ -60,6 +65,7 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
 
