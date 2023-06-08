@@ -36,26 +36,15 @@ def checkout(items):
         'V': [{'quantity': 2, 'price': 90}, {'quantity': 3, 'price': 130}],
     }
     special_price_offers = {
-        'A': [{'quantity': 3, 'price': 130}, {'quantity': 5, 'price': 200}],
         'B': {'quantity': 2, 'price': 45},
-        'E': {'quantity': 2, 'free': 'B'},
         'F': {'quantity': 2, 'free': 'F'},
-        'H': [{'quantity': 5, 'price': 45}, {'quantity': 10, 'price': 80}],
         'K': {'quantity': 2, 'price': 150},
-        'N': {'quantity': 3, 'free': 'M'},
         'P': {'quantity': 5, 'price': 200},
         'Q': {'quantity': 3, 'price': 80},
         'R': {'quantity': 3, 'free': 'Q'},
-        'U': {'quantity': 3, 'free': 'U'},
-        'V': [{'quantity': 2, 'price': 90}, {'quantity': 3, 'price': 130}],
     }
-    special_offers = {
-        'A': [{'quantity': 3, 'price': 130}, {'quantity': 5, 'price': 200}],
-        'B': {'quantity': 2, 'price': 45},
+    special_free_offers = {
         'E': {'quantity': 2, 'free': 'B'},
-        'F': {'quantity': 2, 'free': 'F'},
-        'H': [{'quantity': 5, 'price': 45}, {'quantity': 10, 'price': 80}],
-        'K': {'quantity': 2, 'price': 150},
         'N': {'quantity': 3, 'free': 'M'},
         'P': {'quantity': 5, 'price': 200},
         'Q': {'quantity': 3, 'price': 80},
@@ -120,8 +109,4 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
-
-
-
-
 
