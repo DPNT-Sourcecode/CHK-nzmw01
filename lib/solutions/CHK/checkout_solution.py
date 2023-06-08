@@ -43,6 +43,9 @@ def checkout(skus):
             if sku_count[sku] >= 2 and 'B' in sku_count.keys():
                 # check how many multiples of E's
                 sku_E_count = sku_count[sku] // 2
+                # reduce the multiples of B's by the number of multiples of E's
+                sku_count['B'] -= sku_E_count
+                
 
                 # check if there are multiples of B's
                 if sku_count['B'] >= sku_count[sku] // 2:
@@ -61,9 +64,3 @@ def checkout(skus):
 
     
     
-
-
-
-
-
-
