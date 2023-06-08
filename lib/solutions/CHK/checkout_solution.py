@@ -37,7 +37,7 @@ def checkout(skus):
                     free_item_count = count // quantity
                     sku_count[free_item] += free_item_count
             
-            if item == 'A' and count >= quantity:
+            if (item == 'A' or item == 'B') and count >= quantity:
                 if count >= offer['quantity']:
                     total_price += (count // quantity) * offer['price']
                     count = count % quantity
@@ -45,11 +45,7 @@ def checkout(skus):
             if item == 'B' and count >= quantity:
 
 
-
-
-
-
-def checkout(skus):
+def checkout2(skus):
     defined_skus = 'ABCDE'
     # if not skus:
     #     return 0
@@ -111,6 +107,7 @@ def checkout(skus):
 
     
     
+
 
 
 
