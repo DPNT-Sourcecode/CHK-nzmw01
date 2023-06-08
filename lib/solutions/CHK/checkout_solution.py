@@ -13,7 +13,7 @@ def checkout(items):
         'A': [{'quantity': 3, 'price': 130}, {'quantity': 5, 'price': 200}],
         'B': {'quantity': 2, 'price': 45},
         'E': {'quantity': 2, 'free': 'B'},
-        'F': {'quantity': 3, 'free': 'F'},
+        'F': {'quantity': 2, 'free': 'F'},
     }
 
     # check if skus is empty
@@ -59,13 +59,13 @@ def checkout(items):
                 count %= 2
 
             if item == 'F' and count >= 3:
-                
-
-            
-                       
+                free_f_count = count // 3
+                count = count - free_f_count + (count % 3)
+             
         # add the price of the remaining items
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
