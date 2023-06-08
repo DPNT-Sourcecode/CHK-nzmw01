@@ -23,9 +23,11 @@ def checkout(skus):
     total_price = 0
     for sku in sku_count.keys():
         if sku == 'A':
+            if sku_count[sku] >= 5:
+                total_price += (sku_count[sku] // 5) * 200 + (sku_count[sku] % 5) * 50
+            else:
+                
             total_price += (sku_count[sku] // 3) * 130 + (sku_count[sku] % 3) * 50
-        elif sku == 'B':
-            total_price += (sku_count[sku] // 2) * 45 + (sku_count[sku] % 2) * 30
         elif sku == 'C':
             total_price += sku_count[sku] * 20
         elif sku == 'D':
@@ -41,9 +43,11 @@ def checkout(skus):
                 else:
                     sku_count[sku] -= sku_count['B'] * 2
                     sku_count['B'] = 0
-            
+        elif sku == 'B':
+            total_price += (sku_count[sku] // 2) * 45 + (sku_count[sku] % 2) * 30
 
     return total_price
 
     
     
+
