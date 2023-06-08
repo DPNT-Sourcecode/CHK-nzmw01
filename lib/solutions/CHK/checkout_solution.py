@@ -6,7 +6,8 @@ def checkout(items):
         'B': 30,
         'C': 20,
         'D': 15,
-        'E': 40
+        'E': 40,
+        'F': 10,
     }
 
     special_offers = {
@@ -66,6 +67,7 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
 
