@@ -12,6 +12,6 @@ def checkout(skus):
         return -1
     if any([skus.count(sku) > 9 for sku in 'STXYZ']):
         return -1
-    
-
-
+    if any([skus.count(sku) > 1 for sku in 'STXYZ']):
+        return -1
+    if 
