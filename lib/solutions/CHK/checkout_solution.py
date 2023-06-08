@@ -3,6 +3,16 @@ from collections import Counter
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+    prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
+    special_offers = {
+        'A': {'quantity': 3, 'price': 130},
+        'A_5': {'quantity': 5, 'price': 200},
+        'B': {'quantity': 2, 'price': 45},
+        'E': {'quantity': 2, 'price': 0}
+    }
+    
+
+def checkout(skus):
     defined_skus = 'ABCDE'
     # if not skus:
     #     return 0
@@ -66,4 +76,5 @@ def checkout(skus):
 
     
     
+
 
