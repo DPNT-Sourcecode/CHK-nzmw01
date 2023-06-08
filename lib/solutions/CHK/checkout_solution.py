@@ -3,6 +3,7 @@ from collections import Counter
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+    # define the prices of each sku
     prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
     special_offers = {
         'A': {'quantity': 3, 'price': 130},
@@ -10,14 +11,27 @@ def checkout(skus):
         'B': {'quantity': 2, 'price': 45},
         'E': {'quantity': 2, 'price': 0}
     }
+    # check if skus is empty
+    if not skus:
+        return -1
     
+    # check if skus is a string
+    if not isinstance(skus, str):
+        return -1
+    
+    # count the frequency of each sku
+    
+
+    # check if skus contains only valid skus
+
+
+
+
 
 def checkout(skus):
     defined_skus = 'ABCDE'
     # if not skus:
     #     return 0
-    if not isinstance(skus, str):
-        return -1
     # skus = skus.upper()
    # if not all([sku in 'ABCD' for sku in skus]):
     #     return -1
@@ -76,5 +90,6 @@ def checkout(skus):
 
     
     
+
 
 
