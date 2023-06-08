@@ -10,8 +10,7 @@ def checkout(items):
     }
 
     special_offers = {
-        'A': {'quantity': 3, 'price': 130},
-        'A_5': {'quantity': 5, 'price': 200},
+        'A': [{'quantity': 3, 'price': 130}, {'quantity': 5, 'price': 200}],
         'B': {'quantity': 2, 'price': 45},
         'E': {'quantity': 2, 'free': 'B'}
     }
@@ -62,5 +61,6 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
