@@ -36,6 +36,18 @@ def checkout(items):
         if item in special_offers:
             offer = special_offers[item]
             quantity = offer['quantity']
+            if item == 'A':
+                if count >= 5:
+                    total_price += (count // 5) * 200
+                    count %= 5
+                if count >= 3:
+                    total_price += (count // 3) * 130
+                    count %= 3
+            
+            if item == 'E' and 
+
+
+
             if count >= quantity:
                 if item == 'A':
                     if count >= offer['quantity']:
@@ -171,4 +183,5 @@ def checkout(skus):
 
     
     
+
 
