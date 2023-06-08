@@ -46,10 +46,7 @@ def checkout(items):
     special_free_offers = {
         'E': {'quantity': 2, 'free': 'B'},
         'N': {'quantity': 3, 'free': 'M'},
-        'P': {'quantity': 5, 'price': 200},
-        'Q': {'quantity': 3, 'price': 80},
         'R': {'quantity': 3, 'free': 'Q'},
-        'U': {'quantity': 3, 'free': 'U'},
         'V': [{'quantity': 2, 'price': 90}, {'quantity': 3, 'price': 130}],
     }
 
@@ -71,14 +68,23 @@ def checkout(items):
         return -1
 
     # select E items first if available
-    if 'E' in item_counts.keys() and 'B' in item_counts.keys():
-        count = item_counts['E']
-        offer = special_offers['E']
-        total_free = count // 2
-        if total_free >= 1:
-            item_counts[offer['free']] -= total_free
-            if item_counts[offer['free']] < 0:
-                item_counts[offer['free']] = 0
+    for free_item, offer in special_free_offers.items():
+        if free_item in item_counts.keys() and offer['free'] in item_counts.keys():
+            count = item_counts[free_item]
+            total_free = count // offer['quantity']
+            if total_free >= 1:
+                item_counts[offer['free']] -= total_free
+                if item_counts[offer['free']] < 0:
+                    item_counts[offer['free']] = 0
+
+    # if 'E' in item_counts.keys() and 'B' in item_counts.keys():
+    #     count = item_counts['E']
+    #     offer = special_offers['E']
+    #     total_free = count // 2
+    #     if total_free >= 1:
+    #         item_counts[offer['free']] -= total_free
+    #         if item_counts[offer['free']] < 0:
+    #             item_counts[offer['free']] = 0
 
     for item, count in item_counts.items():
         # apply special offers
@@ -109,4 +115,5 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
