@@ -9,7 +9,7 @@ def checkout(skus):
         'A': {'quantity': 3, 'price': 130},
         'A_5': {'quantity': 5, 'price': 200},
         'B': {'quantity': 2, 'price': 45},
-        'E': {'quantity': 2, 'price': 0}
+        'E': {'quantity': 2, 'free': 'B'}
     }
     # check if skus is empty
     if not skus:
@@ -43,6 +43,7 @@ def checkout(skus):
                     count = count % quantity
             
             if item == 'B' and count >= quantity:
+
 
 
 
@@ -110,6 +111,7 @@ def checkout(skus):
 
     
     
+
 
 
 
