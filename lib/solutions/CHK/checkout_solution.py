@@ -11,7 +11,23 @@ def checkout(items):
         'G': 20,
         'H': 10,
         'I': 35,
-        
+        'J': 60,
+        'K': 80,
+        'L': 90,
+        'M': 15,
+        'N': 40,
+        'O': 10,
+        'P': 50,
+        'Q': 30,
+        'R': 50,
+        'S': 30,
+        'T': 20,
+        'U': 40,
+        'V': 50,
+        'W': 20,
+        'X': 90,
+        'Y': 10,
+        'Z': 50,
     }
 
     special_offers = {
@@ -19,6 +35,14 @@ def checkout(items):
         'B': {'quantity': 2, 'price': 45},
         'E': {'quantity': 2, 'free': 'B'},
         'F': {'quantity': 2, 'free': 'F'},
+        'H': [{'quantity': 5, 'price': 45}, {'quantity': 10, 'price': 80}],
+        'K': {'quantity': 2, 'price': 150},
+        'N': {'quantity': 3, 'free': 'M'},
+        'P': {'quantity': 5, 'price': 200},
+        'Q': {'quantity': 3, 'price': 80},
+        'R': {'quantity': 3, 'free': 'Q'},
+        'U': {'quantity': 3, 'free': 'U'},
+        'V': [{'quantity': 2, 'price': 90}, {'quantity': 3, 'price': 130}],
     }
 
     # check if skus is empty
@@ -75,6 +99,7 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
 
