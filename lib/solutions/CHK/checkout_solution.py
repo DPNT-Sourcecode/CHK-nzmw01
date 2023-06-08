@@ -41,11 +41,14 @@ def checkout(skus):
                 if count >= offer['quantity']:
                     total_price += (count // quantity) * offer['price']
                     count = count % quantity
+
+        total_price += count * prices.get(item, 0)
+    
+    return total_price
             
-            if item == 'B' and count >= quantity:
 
 
-def checkout2(skus):
+# def checkout2(skus):
     defined_skus = 'ABCDE'
     # if not skus:
     #     return 0
@@ -107,10 +110,3 @@ def checkout2(skus):
 
     
     
-
-
-
-
-
-
-
