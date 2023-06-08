@@ -29,7 +29,10 @@ def checkout(skus):
             total_price += sku_count[sku] * 20
         elif sku == 'D':
             total_price += sku_count[sku] * 15
+    return total_price
+
     
     
+
 
 
