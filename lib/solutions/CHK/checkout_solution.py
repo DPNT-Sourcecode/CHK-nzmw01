@@ -25,9 +25,9 @@ def checkout(skus):
         if sku == 'A':
             if sku_count[sku] >= 5:
                 total_price += (sku_count[sku] // 5) * 200 + (sku_count[sku] // 3) * 130 + (sku_count[sku] % 5) * 50
-            elif sku_count[sku] >= 3:
+            if sku_count[sku] >= 3:
                 total_price += (sku_count[sku] // 3) * 130 + (sku_count[sku] % 3) * 50
-            else:
+            if sku_count[sku] < 3:
                 total_price += sku_count[sku] * 50
         elif sku == 'C':
             total_price += sku_count[sku] * 20
@@ -37,6 +37,9 @@ def checkout(skus):
             total_price += sku_count[sku] * 40
             # check how many multiples of 2E's
             if sku_count[sku] >= 2 and 'B' in sku_count.keys():
+                # check how many multiples of E's
+                sku_E_count = sku_count[sku] // 2
+
                 # check if there are multiples of B's
                 if sku_count['B'] >= sku_count[sku] // 2:
                     sku_count['B'] -= sku_count[sku] // 2
@@ -54,6 +57,7 @@ def checkout(skus):
 
     
     
+
 
 
 
