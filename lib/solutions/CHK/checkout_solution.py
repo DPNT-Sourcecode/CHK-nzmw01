@@ -7,7 +7,7 @@ def checkout(skus):
     #     return 0
     if not isinstance(skus, str):
         return -1
-    skus = skus.upper()
+    # skus = skus.upper()
    # if not all([sku in 'ABCD' for sku in skus]):
     #     return -1
     # count frequency of each sku
@@ -33,6 +33,7 @@ def checkout(skus):
 
     
     
+
 
 
 
