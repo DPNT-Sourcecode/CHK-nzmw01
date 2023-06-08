@@ -8,6 +8,10 @@ def checkout(items):
         'D': 15,
         'E': 40,
         'F': 10,
+        'G': 20,
+        'H': 10,
+        'I': 35,
+        
     }
 
     special_offers = {
@@ -71,5 +75,6 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
