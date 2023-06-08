@@ -46,10 +46,15 @@ def checkout(items):
             
             if item == 'E' and offer['free'] in item_counts:
                 total_free = count // 2
-                if offer['free'] > total_free:
-                    item_counts[offer['free']] = 0
-                else:
-                    item_counts[offer['free']] -= total_free
+                if total_free >= 1:
+                     item_counts[offer['free']] -= total_free
+                     if item_counts[offer['free']] < 0:
+                            item_counts[offer['free']] = 0
+            
+            if item == 'B' and count >= 2:
+                total_price += (count // 2) * 45
+                count %= 2
+                       
 
 
 
@@ -188,3 +193,4 @@ def checkout(skus):
 
     
     
+
