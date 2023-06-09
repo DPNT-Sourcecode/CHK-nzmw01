@@ -37,10 +37,12 @@ def checkout(items):
     }
     special_price_offers = {
         'B': {'quantity': 2, 'price': 45},
-        'F': {'quantity': 2, 'free': 'F'},
         'K': {'quantity': 2, 'price': 150},
         'P': {'quantity': 5, 'price': 200},
         'Q': {'quantity': 3, 'price': 80},
+    }
+    special_extra_offers = {
+        'F': {'quantity': 2, 'free': 'F'},
         'R': {'quantity': 3, 'free': 'Q'},
     }
     special_free_offers = {
@@ -104,6 +106,12 @@ def checkout(items):
         
         if item in special_price_offers.keys():
             offer = special_price_offers[item]
+            if count >= offer['quantity']:
+                total_price += (count // offer['quantity']) * offer['price']
+                count %= offer['quantity']
+            
+        if item in special_extra_offers.keys():
+            offer = special_extra_offers[item]
             
             
             if item == 'B' and count >= 2:
@@ -123,6 +131,7 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
 
