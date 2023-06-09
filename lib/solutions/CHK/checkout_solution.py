@@ -50,6 +50,7 @@ def checkout(items):
         'N': {'quantity': 3, 'free': 'M'},
         'R': {'quantity': 3, 'free': 'Q'},
     }
+    special_combo_offers = ['S', 'T', 'X', 'Y', 'Z']
 
 
     # check if skus is empty
@@ -68,7 +69,7 @@ def checkout(items):
     if any([sku not in prices.keys() for sku in item_counts.keys()]):
         return -1
 
-    # select E items first if available
+    # select from special_free_offer items first if available
     for free_item, offer in special_free_offers.items():
         if free_item in item_counts.keys() and offer['free'] in item_counts.keys():
             count = item_counts[free_item]
@@ -78,14 +79,13 @@ def checkout(items):
                 if item_counts[offer['free']] < 0:
                     item_counts[offer['free']] = 0
 
-    # if 'E' in item_counts.keys() and 'B' in item_counts.keys():
-    #     count = item_counts['E']
-    #     offer = special_offers['E']
-    #     total_free = count // 2
-    #     if total_free >= 1:
-    #         item_counts[offer['free']] -= total_free
-    #         if item_counts[offer['free']] < 0:
-    #             item_counts[offer['free']] = 0
+    # select from special_combo_offers items first if available
+    for combo_item in special_combo_offers:
+        if combo_item in item_counts.keys():
+            count = item_counts[combo_item]
+            if count >= 3:
+                total_price += (count // 3) * 45
+                count %= 3
 
     for item, count in item_counts.items():
         # apply special offers
@@ -137,5 +137,6 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
