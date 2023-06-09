@@ -86,6 +86,8 @@ def checkout(items):
             if count >= 3:
                 total_price += (count // 3) * 45
                 count %= 3
+        
+        
             
 
     for item, count in item_counts.items():
@@ -138,6 +140,7 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
 
