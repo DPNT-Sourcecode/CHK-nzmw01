@@ -31,9 +31,9 @@ def checkout(items):
     }
 
     special_double_offers = {
-        'A': [{'quantity': 5, 'price': 200}, {'quantity': 3, 'price': 130}, ],
-        'H': [{'quantity': 5, 'price': 45}, {'quantity': 10, 'price': 80}],
-        'V': [{'quantity': 2, 'price': 90}, {'quantity': 3, 'price': 130}],
+        'A': [{'quantity': 5, 'price': 200}, {'quantity': 3, 'price': 130}],
+        'H': [{'quantity': 10, 'price': 80}, {'quantity': 5, 'price': 45}],
+        'V': [{'quantity': 3, 'price': 130}, {'quantity': 2, 'price': 90}],
     }
     special_price_offers = {
         'B': {'quantity': 2, 'price': 45},
@@ -136,5 +136,6 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
