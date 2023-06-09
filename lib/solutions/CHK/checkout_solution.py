@@ -84,11 +84,17 @@ def checkout(items):
     for combo_item in special_combo_offers:
         if combo_item in item_counts.keys():
             count = item_counts[combo_item]
+            # remove single combo items in multiples of 3
             if count >= 3:
                 total_price += (count // 3) * 45
-                # count -= (count // 3)
-                remainder_count = count % 3
                 count %= 3
+            # remove multiple combo items in multiples of 3
+            while total_remaining_combo_items < 3:
+                total_remaining_combo_items += count
+
+                if total_remaining_combo_items >= 3:
+                    total_price += 45
+                total_remaining_combo_items -= 3
         
 
     for item, count in item_counts.items():
@@ -121,6 +127,7 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
 
