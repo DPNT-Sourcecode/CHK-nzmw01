@@ -109,19 +109,20 @@ def checkout(items):
             if count >= offer['quantity']:
                 total_price += (count // offer['quantity']) * offer['price']
                 count %= offer['quantity']
-            
+             # if item == 'B' and count >= 2:
+            #     total_price += (count // 2) * 45
+            #     count %= 2
+           
         if item in special_extra_offers.keys():
             offer = special_extra_offers[item]
-            if count >= offer['quantity']:
-                free_count = count // offer['quantity']
-                remainder_count = count % offer['quantity']
+            offer_quantity = offer['quantity'] + 1
+            if count >= offer_quantity:
+                free_count = count // offer_quantity
+                remainder_count = count % offer_quantity
                 if remainder_count == 1:
                     free_count += 1
                 count = count - free_count + remainder_count
            
-            # if item == 'B' and count >= 2:
-            #     total_price += (count // 2) * 45
-            #     count %= 2
 
             # if item == 'F' and count >= 3:
             #     free_f_count = count // 3
@@ -136,6 +137,7 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
 
