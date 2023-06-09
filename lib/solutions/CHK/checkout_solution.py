@@ -86,6 +86,7 @@ def checkout(items):
             count = item_counts[combo_item]
             if count >= 3:
                 total_price += (count // 3) * 45
+                remainder_count = count % 3
                 count %= 3
         
         
@@ -141,4 +142,5 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
