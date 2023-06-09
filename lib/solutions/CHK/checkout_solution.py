@@ -50,7 +50,7 @@ def checkout(items):
         'N': {'quantity': 3, 'free': 'M'},
         'R': {'quantity': 3, 'free': 'Q'},
     }
-    special_combo_offers = ['S', 'T', 'X', 'Y', 'Z']
+    special_combo_offers = ['Z', 'S', 'T', 'Y', 'X']
 
 
     # check if skus is empty
@@ -80,6 +80,7 @@ def checkout(items):
                     item_counts[offer['free']] = 0
 
     # select from special_combo_offers items first if available
+    total_remaining_combo_items = 0
     for combo_item in special_combo_offers:
         if combo_item in item_counts.keys():
             count = item_counts[combo_item]
@@ -140,8 +141,4 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
-
-
-
-
 
