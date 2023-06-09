@@ -12,7 +12,7 @@ def checkout(items):
         'H': 10,
         'I': 35,
         'J': 60,
-        'K': 80,
+        'K': 70,
         'L': 90,
         'M': 15,
         'N': 40,
@@ -20,14 +20,14 @@ def checkout(items):
         'P': 50,
         'Q': 30,
         'R': 50,
-        'S': 30,
+        'S': 20,
         'T': 20,
         'U': 40,
         'V': 50,
         'W': 20,
-        'X': 90,
-        'Y': 10,
-        'Z': 50,
+        'X': 17,
+        'Y': 20,
+        'Z': 21,
     }
 
     special_double_offers = {
@@ -37,7 +37,7 @@ def checkout(items):
     }
     special_price_offers = {
         'B': {'quantity': 2, 'price': 45},
-        'K': {'quantity': 2, 'price': 150},
+        'K': {'quantity': 2, 'price': 120},
         'P': {'quantity': 5, 'price': 200},
         'Q': {'quantity': 3, 'price': 80},
     }
@@ -137,4 +137,5 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
