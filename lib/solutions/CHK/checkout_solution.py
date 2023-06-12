@@ -136,7 +136,3 @@ def checkout(items):
 
     return total_price
 
-
-
-
-
