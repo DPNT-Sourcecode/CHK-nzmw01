@@ -95,8 +95,7 @@ def checkout(items):
         if total_combo_remainder_count > 0:
             y = 0
             while y <= total_combo_remainder_count:
-                value_y = sorted_counter[y]
-                key_y = sorted_counter.keys()[y]
+                key_y, value_y = sorted_counter[y]
                 item_remainder_count = value_y % 3
                 total_price += prices[key_y] * item_remainder_count
                 y += item_remainder_count
@@ -136,6 +135,7 @@ def checkout(items):
             total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
 
