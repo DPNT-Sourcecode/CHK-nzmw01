@@ -104,36 +104,37 @@ def checkout(items):
         item_counts = item_counts - selected_counts
 
         
+    if len(item_counts) > 0:
+        for item, count in item_counts.items():
+            # apply special offers
+            if item in special_double_offers.keys():
+                offer = special_double_offers[item]
+                for o in offer:
+                    if count >= o['quantity']:
+                        total_price += (count // o['quantity']) * o['price']
+                        count %= o['quantity']
 
-    for item, count in item_counts.items():
-        # apply special offers
-        if item in special_double_offers.keys():
-            offer = special_double_offers[item]
-            for o in offer:
-                if count >= o['quantity']:
-                    total_price += (count // o['quantity']) * o['price']
-                    count %= o['quantity']
-
-        
-        if item in special_price_offers.keys():
-            offer = special_price_offers[item]
-            if count >= offer['quantity']:
-                total_price += (count // offer['quantity']) * offer['price']
-                count %= offer['quantity']
-           
-        if item in special_extra_offers.keys():
-            offer = special_extra_offers[item]
-            offer_quantity = offer['quantity'] + 1
-            if count >= offer_quantity:
-                free_count = count // offer_quantity
-                remainder_count = count % offer_quantity
-                if remainder_count == 1:
-                    free_count += 1
-                count = count - free_count + remainder_count            
-             
-        # add the price of the remaining items
-        total_price += count * prices.get(item, 0)
+            
+            if item in special_price_offers.keys():
+                offer = special_price_offers[item]
+                if count >= offer['quantity']:
+                    total_price += (count // offer['quantity']) * offer['price']
+                    count %= offer['quantity']
+            
+            if item in special_extra_offers.keys():
+                offer = special_extra_offers[item]
+                offer_quantity = offer['quantity'] + 1
+                if count >= offer_quantity:
+                    free_count = count // offer_quantity
+                    remainder_count = count % offer_quantity
+                    if remainder_count == 1:
+                        free_count += 1
+                    count = count - free_count + remainder_count            
+                
+            # add the price of the remaining items
+            total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
