@@ -79,21 +79,30 @@ def checkout(items):
                 if item_counts[offer['free']] < 0:
                     item_counts[offer['free']] = 0
 
-    # select from special_combo_offers items first if available
-    total_remaining_combo_items = 0
-    for combo_item in special_combo_offers:
-        if combo_item in item_counts.keys():
-            count = item_counts[combo_item]
-            # remove single combo items in multiples of 3
-            if count >= 3:
-                total_price += (count // 3) * 45
-                
-            else:
-                total_remaining_combo_items += count % 3
+    # apply special_combo_offers   
+    # special combo list is sorted from low to high prices
+    special_combo_offers = ['X', 'S', 'T', 'Y', 'Z']
+    # Creating a new Counter with selected items
+    selected_counts = Counter({item: item_counts[item] for item in special_combo_offers})
+    # Summing the values of the Counter
+    total_selected_count = sum(selected_counts.values())
 
-                if total_remaining_combo_items >= 3:
-                    total_price += 45
-                total_remaining_combo_items -= 3
+    if total_selected_count >= 3:
+        total_price += (total_selected_count // 3) * 45
+        # Sort the Counter by the special_combo_offers list to favour the customer
+        sorted_counter = sorted(selected_counts.items(), key=lambda x: special_combo_offers.index(x[0]))
+        total_combo_remainder_count = total_selected_count % 3
+        y = 0
+        while y <= total_combo_remainder_count:
+            value_y = sorted_counter[y]
+            key_y = sorted_counter.keys()[y]
+            item_remainder_count = value_y % 3
+            total_price += prices[key_y] * item_remainder_count
+            y += item_remainder_count
+
+        # Subtract the selected_counts from the original counter
+        item_counts = item_counts - selected_counts
+
         
 
     for item, count in item_counts.items():
@@ -126,4 +135,5 @@ def checkout(items):
         total_price += count * prices.get(item, 0)
 
     return total_price
+
 
