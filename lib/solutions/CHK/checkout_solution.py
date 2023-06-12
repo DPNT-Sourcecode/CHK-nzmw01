@@ -92,13 +92,14 @@ def checkout(items):
         # Sort the Counter by the special_combo_offers list to favour the customer
         sorted_counter = sorted(selected_counts.items(), key=lambda x: special_combo_offers.index(x[0]))
         total_combo_remainder_count = total_selected_count % 3
-        y = 0
-        while y <= total_combo_remainder_count:
-            value_y = sorted_counter[y]
-            key_y = sorted_counter.keys()[y]
-            item_remainder_count = value_y % 3
-            total_price += prices[key_y] * item_remainder_count
-            y += item_remainder_count
+        if total_combo_remainder_count > 0:
+            y = 0
+            while y <= total_combo_remainder_count:
+                value_y = sorted_counter[y]
+                key_y = sorted_counter.keys()[y]
+                item_remainder_count = value_y % 3
+                total_price += prices[key_y] * item_remainder_count
+                y += item_remainder_count
 
         # Subtract the selected_counts from the original counter
         item_counts = item_counts - selected_counts
@@ -135,6 +136,7 @@ def checkout(items):
             total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
 
