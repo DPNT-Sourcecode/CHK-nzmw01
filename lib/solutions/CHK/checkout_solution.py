@@ -83,7 +83,7 @@ def checkout(items):
     # special combo list is sorted from low to high prices
     special_combo_offers = ['X', 'S', 'T', 'Y', 'Z']
     # Creating a new Counter with selected items
-    selected_counts = Counter({item: item_counts[item] for item in special_combo_offers})
+    selected_counts = Counter({item: item_counts[item] for item in special_combo_offers if item in item_counts.keys()})
     # Summing the values of the Counter
     total_selected_count = sum(selected_counts.values())
 
@@ -97,6 +97,10 @@ def checkout(items):
             while y <= total_combo_remainder_count:
                 key_y, value_y = sorted_counter[y]
                 item_remainder_count = value_y % 3
+                if item_remainder_count == 0:
+                    y += 1
+                    continue
+
                 total_price += prices[key_y] * item_remainder_count
                 y += item_remainder_count
 
@@ -135,4 +139,5 @@ def checkout(items):
             total_price += count * prices.get(item, 0)
 
     return total_price
+
 
