@@ -95,12 +95,17 @@ def checkout(items):
         if total_combo_remainder_count > 0:
             y = 0
             while y <= total_combo_remainder_count:
+                # select the key value pairs from the sorted counter to favour the customer
                 key_y, value_y = sorted_counter[y]
+                # if the value_y is greater that remainder, use it
+                if value_y >= total_combo_remainder_count:
+                    total_price += prices[key_y] * total_combo_remainder_count
+                    break
                 item_remainder_count = value_y % 3
                 if item_remainder_count == 0:
                     y += 1
+                    total_combo_remainder_count -= 1
                     continue
-
                 total_price += prices[key_y] * item_remainder_count
                 y += item_remainder_count
 
@@ -139,5 +144,6 @@ def checkout(items):
             total_price += count * prices.get(item, 0)
 
     return total_price
+
 
 
