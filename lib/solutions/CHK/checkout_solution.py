@@ -107,6 +107,7 @@ def checkout(items):
                     continue
                 total_price += prices[key_y] * item_remainder_count
                 y += item_remainder_count
+                total_combo_remainder_count -= item_remainder_count
 
         # Subtract the selected_counts from the original counter
         item_counts = item_counts - selected_counts
@@ -143,4 +144,5 @@ def checkout(items):
             total_price += count * prices.get(item, 0)
 
     return total_price
+
 
