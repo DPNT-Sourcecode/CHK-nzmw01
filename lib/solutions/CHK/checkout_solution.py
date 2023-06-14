@@ -50,7 +50,6 @@ def checkout(items):
         'N': {'quantity': 3, 'free': 'M'},
         'R': {'quantity': 3, 'free': 'Q'},
     }
-    special_combo_offers = ['Z', 'S', 'T', 'Y', 'X']
 
 
     # check if skus is empty
